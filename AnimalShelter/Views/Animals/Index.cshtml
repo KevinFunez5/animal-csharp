@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@using AnimalShelter.Models;
+@model List<AnimalShelter.Models.Animal>;
+
+<h1>Animals</h1>
+
+<ul>
+  @foreach(Animal animal in Model)
+  {
+      <li>@Html.ActionLink($"{animal.DateOfAdmittance} - {animal.Type}: {animal.Name}", "Details", new { id = animal.AnimalId })</li>
+  }
+</ul>
+
+<form action="/animals/index">
+  <label for="sortMethod">Sort Animal List by:</label>
+  <select name="sortMethod" id="sortMethod">
+    <option value="breed">Breed</option>
+    <option value="type">Type</option>
+    <option value="dateRecent">Most Recent</option>
+    <option value="dateOldest">Longest time in admittance</option>
+  </select>
+  <button type="submit">Sort List</button>
+</form>
+
+<p>@Html.ActionLink("Add new animal", "Create")</p>
