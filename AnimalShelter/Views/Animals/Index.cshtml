@@ -10,7 +10,7 @@
 <ul>
   @foreach(Animal animal in Model)
   {
-      <li>@Html.ActionLink($"{animal.DateOfAdmittance} - {animal.Type}: {animal.Name}", "Details", new { id = animal.AnimalId })</li>
+      <li>@Html.ActionLink($"{animal.DateOfAdmittance.Date.ToString("d")} - {animal.Type}: {animal.Name}", "Details", new { id = animal.AnimalId })</li>
   }
 </ul>
 
